@@ -1,38 +1,53 @@
-export const popularTools = [
+export type Tool = {
+    id: string;
+    title: string;
+    slug: string;
+    category: string;
+    description: string;
+    keywords: string[];
+    popular?: boolean;
+    featured?: boolean;
+};
+
+export const tools: Tool[] = [
     {
+        id: "compress-image",
         title: "Compress Image",
-        description: "Reduce image size online.",
-        href: "/image/compress-image",
-        category: "Image",
+        slug: "compress-image",
+        category: "image",
+        description: "Reduce image file size online without losing quality.",
+        keywords: [
+            "compress image",
+            "image compressor",
+            "reduce image size"
+        ],
+        popular: true,
+        featured: true,
     },
+
     {
+        id: "resize-image",
         title: "Resize Image",
+        slug: "resize-image",
+        category: "image",
         description: "Resize images instantly.",
-        href: "/image/resize-image",
-        category: "Image",
+        keywords: [
+            "resize image",
+            "image resizer"
+        ],
+        popular: true,
     },
+
     {
+        id: "merge-pdf",
         title: "Merge PDF",
-        description: "Combine PDF files.",
-        href: "/pdf/merge-pdf",
-        category: "PDF",
-    },
-    {
-        title: "Word Counter",
-        description: "Count words and characters.",
-        href: "/text/word-counter",
-        category: "Text",
-    },
-    {
-        title: "JSON Formatter",
-        description: "Beautify JSON instantly.",
-        href: "/developer/json-formatter",
-        category: "Developer",
-    },
-    {
-        title: "QR Generator",
-        description: "Create QR codes online.",
-        href: "/qr/qr-generator",
-        category: "QR",
+        slug: "merge-pdf",
+        category: "pdf",
+        description: "Merge multiple PDF files.",
+        keywords: [
+            "merge pdf",
+            "combine pdf"
+        ],
+        popular: true,
     },
 ];

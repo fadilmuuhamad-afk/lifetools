@@ -1,56 +1,79 @@
+import { siteConfig } from "@/config/site";
+
+import Container from "@/components/common/Container";
+import Section from "@/components/common/Section";
+import HeroSearch from "@/components/search/HeroSearch";
+
 export default function Hero() {
     return (
-        <section className="mx-auto flex min-h-[85vh] max-w-7xl flex-col items-center justify-center px-6 text-center">
+        <Section className="relative overflow-hidden">
 
-            <span className="mb-6 rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-600">
-                🚀 Welcome to LifeTools
-            </span>
+            {/* Background Gradient */}
+            <div className="absolute inset-0 -z-10 bg-gradient-to-b from-blue-50 via-white to-white" />
 
-            <h1 className="max-w-4xl text-5xl font-extrabold tracking-tight md:text-7xl">
-                Free Online Tools
-                <br />
-                for Everyday Tasks
-            </h1>
+            <Container>
 
-            <p className="mt-8 max-w-2xl text-lg text-gray-500">
-                Compress images, merge PDFs, convert files, format JSON,
-                generate QR codes and much more —
-                all for free.
-            </p>
+                <div className="mx-auto max-w-4xl text-center">
 
-            <div className="mt-10 w-full max-w-xl">
+                    {/* Badge */}
 
-                <input
-                    placeholder="Search for a tool..."
-                    className="h-14 w-full rounded-2xl border px-6 text-lg outline-none transition focus:border-blue-500"
-                />
+                    <div className="inline-flex rounded-full border bg-white px-4 py-2 text-sm shadow-sm">
 
-            </div>
+                        {siteConfig.hero.badge}
 
-            <div className="mt-12 flex flex-wrap justify-center gap-3">
+                    </div>
 
-                <span className="rounded-full bg-gray-100 px-4 py-2">
-                    Image Tools
-                </span>
+                    {/* Title */}
 
-                <span className="rounded-full bg-gray-100 px-4 py-2">
-                    PDF
-                </span>
+                    <h1 className="mt-8 text-5xl font-black tracking-tight md:text-7xl">
 
-                <span className="rounded-full bg-gray-100 px-4 py-2">
-                    Text
-                </span>
+                        {siteConfig.hero.title}
 
-                <span className="rounded-full bg-gray-100 px-4 py-2">
-                    Developer
-                </span>
+                        <br />
 
-                <span className="rounded-full bg-gray-100 px-4 py-2">
-                    Calculator
-                </span>
+                        <span className="text-blue-600">
 
-            </div>
+                            {siteConfig.hero.subtitle}
 
-        </section>
+                        </span>
+
+                    </h1>
+
+                    {/* Description */}
+
+                    <p className="mx-auto mt-8 max-w-2xl text-lg text-muted-foreground">
+
+                        {siteConfig.hero.description}
+
+                    </p>
+                    <HeroSearch />
+                    <div className="mt-12 grid grid-cols-3 gap-6">
+
+                        {siteConfig.hero.stats.map((stat) => (
+
+                            <div key={stat.label}>
+
+                                <h3 className="text-3xl font-bold">
+
+                                    {stat.value}
+
+                                </h3>
+
+                                <p className="text-sm text-muted-foreground">
+
+                                    {stat.label}
+
+                                </p>
+
+                            </div>
+
+                        ))}
+
+                    </div>
+                </div>
+
+            </Container>
+
+        </Section>
     );
 }

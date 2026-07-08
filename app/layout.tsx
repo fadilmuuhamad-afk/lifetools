@@ -3,6 +3,7 @@ import "./globals.css";
 
 import { Geist } from "next/font/google";
 import { siteConfig } from "@/config/site";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -20,9 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={geist.className}>
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

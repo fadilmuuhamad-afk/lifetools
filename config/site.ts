@@ -4,19 +4,31 @@ export const siteConfig = {
     title: "LifeTools | Free Online Tools",
 
     description:
-        "Free online tools for image editing, PDF processing, developer utilities, text tools, calculators and converters.",
+        "Free online tools for images, PDFs, developers, students and everyday tasks.",
 
-    url: "https://lifetools.id",
+    hero: {
+        badge: "🚀 100% Free Online Tools",
 
-    ogImage: "/og-image.png",
+        title: "Everything You Need.",
 
-    creator: "Muhammad Fadil",
+        subtitle: "One Website.",
 
-    keywords: [
-        "free online tools",
-        "compress image",
-        "merge pdf",
-        "word counter",
-        "json formatter",
-    ],
+        description:
+            "500+ Free Online Tools to help you work faster. Compress images, merge PDFs, generate QR codes, format JSON, calculate anything, and much more.",
+
+        stats: [
+            {
+                label: "Tools",
+                value: "500+",
+            },
+            {
+                label: "Categories",
+                value: "20+",
+            },
+            {
+                label: "Free",
+                value: "100%",
+            },
+        ],
+    },
 };
