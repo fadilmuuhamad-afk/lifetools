@@ -1,5 +1,15 @@
 import { notFound } from "next/navigation";
-import { getTool } from "@/lib/tools";
+
+import ToolHeader from "@/components/tool/ToolHeader";
+import ToolLayout from "@/components/tool/ToolLayout";
+import RelatedTools from "@/components/tool/RelatedTools";
+import AdPlaceholder from "@/components/tool/AdPlaceholder";
+import ToolWorkspace from "@/components/tool/ToolWorkspace";
+
+import {
+    getRelatedTools,
+    getTool,
+} from "@/lib/tools";
 
 type Props = {
     params: Promise<{
@@ -8,7 +18,9 @@ type Props = {
     }>;
 };
 
-export default async function ToolPage({ params }: Props) {
+export default async function ToolPage({
+    params,
+}: Props) {
     const { category, slug } = await params;
 
     const tool = getTool(category, slug);
@@ -17,19 +29,31 @@ export default async function ToolPage({ params }: Props) {
         notFound();
     }
 
+    const related = getRelatedTools(category, slug);
+
     return (
-        <main className="mx-auto max-w-5xl px-6 py-16">
-            <h1 className="text-4xl font-bold">
-                {tool.title}
-            </h1>
+        <main className="mx-auto max-w-7xl px-6 py-16">
 
-            <p className="mt-4 text-muted-foreground">
-                {tool.description}
-            </p>
+            <ToolHeader tool={tool} />
 
-            <div className="mt-10 rounded-2xl border p-10">
-                Tool UI akan kita bangun di Sprint berikutnya.
-            </div>
+            <ToolLayout
+                sidebar={
+                    <>
+                        <RelatedTools tools={related} />
+
+                        <AdPlaceholder />
+                    </>
+                }
+            >
+    
+                <div className="rounded-2xl border p-10">
+
+                    <ToolWorkspace />
+
+                </div>
+
+            </ToolLayout>
+
         </main>
     );
 }
