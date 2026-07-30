@@ -1,4 +1,5 @@
 import { tools } from "@/data";
+import { categories } from "@/data/categories";
 import { Tool } from "@/types/tool";
 
 export function getAllTools(): Tool[] {
@@ -40,5 +41,22 @@ export function getRelatedTools(
         (tool) =>
             tool.category === category &&
             tool.slug !== currentSlug
+    );
+}
+
+export function getCategories() {
+    return categories;
+}
+
+export function getCategoryBySlug(slug: string) {
+    return categories.find(
+        (category) => category.slug === slug
+    );
+}
+export function getCategoryById(
+    id: string
+) {
+    return categories.find(
+        (category) => category.id === id
     );
 }

@@ -25,7 +25,7 @@ export default function Hero() {
 
                     {/* Title */}
 
-                    <h1 className="mt-8 text-5xl font-black tracking-tight md:text-7xl">
+                    <h1 className="ext-4xl font-bold leading-tight sm:text-5xl  lg:text-6xl">
 
                         {siteConfig.hero.title}
 
@@ -41,7 +41,7 @@ export default function Hero() {
 
                     {/* Description */}
 
-                    <p className="mx-auto mt-8 max-w-2xl text-lg text-muted-foreground">
+                    <p className="text-base leading-7 sm:text-lg">
 
                         {siteConfig.hero.description}
 
@@ -59,7 +59,7 @@ export default function Hero() {
 
                                 </h3>
 
-                                <p className="text-sm text-muted-foreground">
+                                <p className="text-base leading-7 sm:text-lg">
 
                                     {stat.label}
 

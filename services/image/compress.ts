@@ -1,18 +1,13 @@
-import imageCompression from "browser-image-compression";
+import { ImageProcessor } from "./ImageProcessor";
 
-export async function compressImage(
+const processor = new ImageProcessor();
+
+export function compressImage(
     file: File,
     quality: number
 ) {
-    const options = {
-        maxSizeMB: 10,
-        useWebWorker: true,
-
-        initialQuality: quality / 100,
-    };
-
-    return await imageCompression(
+    return processor.compress(
         file,
-        options
+        quality
     );
 }

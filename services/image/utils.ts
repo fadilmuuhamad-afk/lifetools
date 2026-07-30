@@ -1,17 +1,69 @@
 export async function loadImage(
     file: File
 ): Promise<HTMLImageElement> {
+
     return new Promise((resolve, reject) => {
-        const img = new Image();
 
-        img.onload = () => {
-            resolve(img);
+        const url = URL.createObjectURL(file);
 
-            URL.revokeObjectURL(img.src);
+        const image = new Image();
+
+        image.onload = () => {
+
+            URL.revokeObjectURL(url);
+
+            resolve(image);
+
         };
 
-        img.onerror = reject;
+        image.onerror = () => {
 
-        img.src = URL.createObjectURL(file);
+            URL.revokeObjectURL(url);
+
+            reject(new Error("Failed to load image."));
+
+        };
+
+        image.src = url;
+
     });
+
+}
+
+export function canvasToBlob(
+    canvas: HTMLCanvasElement,
+    type: string,
+    quality?: number
+): Promise<Blob> {
+
+    return new Promise((resolve, reject) => {
+
+        canvas.toBlob(
+
+            (blob) => {
+
+                if (!blob) {
+
+                    reject(
+                        new Error(
+                            "Failed to create blob."
+                        )
+                    );
+
+                    return;
+
+                }
+
+                resolve(blob);
+
+            },
+
+            type,
+
+            quality
+
+        );
+
+    });
+
 }

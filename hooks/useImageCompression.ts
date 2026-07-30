@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { compressImage } from "@/services/image/compress";
 import { downloadFile } from "@/services/image/download";
+import { toast } from "sonner";
 
 export function useImageCompression() {
     const [file, setFile] = useState<File | null>(null);
@@ -35,8 +36,17 @@ export function useImageCompression() {
                 );
 
             setResult(compressed);
+            toast.success(
+                "Image compressed successfully!"
+            );
             setResultUrl(
                 URL.createObjectURL(compressed)
+            );
+
+        } catch {
+
+            toast.error(
+                "Compression failed."
             );
 
         } finally {
@@ -54,6 +64,10 @@ export function useImageCompression() {
     }
 
     function reset() {
+        toast.info(
+            "Ready for another image."
+        );
+
         setFile(null);
 
         setResult(null);

@@ -5,6 +5,7 @@ import PopularTools from "@/components/home/PopularTools";
 import Features from "@/components/home/Features";
 import Footer from "@/components/layout/Footer";
 
+
 export default function HomePage() {
     return (
         <>

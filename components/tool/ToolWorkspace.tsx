@@ -1,59 +1,32 @@
 "use client";
 
-import { useImageCompression } from "@/hooks/useImageCompression";
+import { workspaceRegistry } from "./engines";
 
-import UploadStep from "./workflow/UploadStep";
-import PreviewStep from "./workflow/PreviewStep";
-import ResultStep from "./workflow/ResultStep";
+import type { Tool } from "@/types/tool";
 
-export default function ToolWorkspace() {
-    const {
-        file,
-        selectFile,
+interface Props {
+    tool: Tool;
+}
 
-        quality,
-        setQuality,
+export default function ToolWorkspace({ tool }: Props) {
+    const Engine =
+        workspaceRegistry[
+        tool.slug as keyof typeof workspaceRegistry
+        ];
 
-        processing,
-
-        result,
-
-        originalUrl,
-        resultUrl,
-
-        compress,
-        download,
-        reset,
-    } = useImageCompression();
-
-    if (!file) {
+    if (!Engine) {
         return (
-            <UploadStep
-                onFile={selectFile}
-            />
+            <div className="rounded-xl border p-8 text-center">
+                <h2 className="text-xl font-semibold">
+                    Tool Coming Soon
+                </h2>
+
+                <p className="mt-2 text-muted-foreground">
+                    This tool is currently under development.
+                </p>
+            </div>
         );
     }
 
-    if (result) {
-        return (
-            <ResultStep
-                originalFile={file}
-                compressedFile={result}
-                originalUrl={originalUrl}
-                resultUrl={resultUrl}
-                onDownload={download}
-                onReset={reset}
-            />
-        );
-    }
-
-    return (
-        <PreviewStep
-            file={file}
-            quality={quality}
-            setQuality={setQuality}
-            processing={processing}
-            onCompress={compress}
-        />
-    );
+    return <Engine />;
 }

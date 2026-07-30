@@ -6,6 +6,7 @@ import { getPopularTools } from "@/lib/tools";
 
 export default function PopularTools() {
     const tools = getPopularTools();
+    console.log(tools);
 
     return (
         <Section>
@@ -19,10 +20,7 @@ export default function PopularTools() {
                     {tools.map((tool) => (
                         <ToolCard
                             key={tool.id}
-                            title={tool.title}
-                            description={tool.description}
-                            category={tool.category}
-                            href={`/tool/${tool.category}/${tool.slug}`}
+                            tool={tool}
                         />
                     ))}
                 </div>

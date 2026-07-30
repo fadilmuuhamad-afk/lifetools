@@ -1,52 +1,84 @@
 "use client";
+
 import StatCard from "@/components/ui/StatCard";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 
 interface Props {
     originalFile: File;
-    compressedFile: File;
+    resultFile: File;
     onDownload: () => void;
+}
+
+function formatFileSize(bytes: number) {
+    const units = ["B", "KB", "MB", "GB"];
+
+    let size = bytes;
+    let unit = 0;
+
+    while (size >= 1024 && unit < units.length - 1) {
+        size /= 1024;
+        unit++;
+    }
+
+    return `${size.toFixed(unit === 0 ? 0 : 2)} ${units[unit]}`;
 }
 
 export default function ResultCard({
     originalFile,
-    compressedFile,
+    resultFile,
     onDownload,
 }: Props) {
-    const originalMB = originalFile.size / 1024 / 1024;
-    const compressedMB = compressedFile.size / 1024 / 1024;
 
-    const saved =
-        (
-            ((originalFile.size - compressedFile.size) /
-                originalFile.size) *
-            100
-        ).toFixed(1);
+    const difference =
+        ((resultFile.size - originalFile.size) /
+            originalFile.size) *
+        100;
+
+    const differenceLabel =
+        `${difference > 0 ? "+" : ""}${difference.toFixed(1)}%`;
+
+    const status =
+        difference < 0
+            ? "Smaller File"
+            : difference > 0
+                ? "Larger File"
+                : "No Size Change";
+
+    const cardStyle =
+        difference < 0
+            ? "border-green-200 bg-green-50"
+            : difference > 0
+                ? "border-yellow-200 bg-yellow-50"
+                : "border-gray-200 bg-gray-50";
 
     return (
-        <div className="rounded-2xl border border-green-200 bg-green-50 p-6">
 
-            <h2 className="text-2xl font-bold text-green-700">
+        <div className={`rounded-2xl border p-6 ${cardStyle}`}>
 
-                ✅ Compression Complete
-
+            <h2 className="text-2xl font-bold">
+                ✅ Result Ready
             </h2>
 
-            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div className="mt-6 grid gap-4 sm:grid-cols-4">
 
                 <StatCard
-                    label="Original"
-                    value={`${originalMB.toFixed(2)} MB`}
+                    label="Original Size"
+                    value={formatFileSize(originalFile.size)}
                 />
 
                 <StatCard
-                    label="Compressed"
-                    value={`${compressedMB.toFixed(2)} MB`}
+                    label="Result Size"
+                    value={formatFileSize(resultFile.size)}
                 />
 
                 <StatCard
-                    label="Saved"
-                    value={`${saved}%`}
+                    label="Difference"
+                    value={differenceLabel}
+                />
+
+                <StatCard
+                    label="Status"
+                    value={status}
                 />
 
             </div>
@@ -55,9 +87,11 @@ export default function ResultCard({
                 className="mt-8"
                 onClick={onDownload}
             >
-                Download Image
+                Download Result
             </PrimaryButton>
 
         </div>
+
     );
+
 }

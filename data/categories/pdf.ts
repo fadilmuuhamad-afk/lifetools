@@ -1,16 +1,36 @@
-import { Tool } from "@/types/tool";
+import { Tool } from "../types";
 
 export const pdfTools: Tool[] = [
+
     {
-        id: "merge-pdf",
-        title: "Merge PDF",
-        slug: "merge-pdf",
+
+        id: "image-to-pdf",
+
+        title: "Image to PDF",
+
+        slug: "image-to-pdf",
+
         category: "pdf",
-        description: "Combine multiple PDF files into one document.",
+
+        description:
+            "Convert multiple images into a PDF document directly in your browser.",
+
         keywords: [
-            "merge pdf",
-            "combine pdf",
+
+            "image to pdf",
+
+            "jpg to pdf",
+
+            "png to pdf",
+
+            "convert images to pdf",
+
         ],
+
         popular: true,
+
+        featured: true,
+
     },
+
 ];

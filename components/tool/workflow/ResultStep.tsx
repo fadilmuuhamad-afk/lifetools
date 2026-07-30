@@ -4,23 +4,29 @@ import PrimaryButton from "@/components/ui/PrimaryButton";
 
 interface Props {
     originalFile: File;
-    compressedFile: File;
+    resultFile: File;
 
     originalUrl: string;
     resultUrl: string;
 
     onDownload(): void;
     onReset(): void;
+
+    resetText?: string;
 }
 
 export default function ResultStep({
     originalFile,
-    compressedFile,
+    resultFile,
     originalUrl,
     resultUrl,
     onDownload,
     onReset,
-}: Props) {
+
+    // Tambahkan ini
+    resetText = "Choose Another File",
+
+}: Props)  {
     return (
         <div className="space-y-8">
 
@@ -31,7 +37,7 @@ export default function ResultStep({
 
             <ResultCard
                 originalFile={originalFile}
-                compressedFile={compressedFile}
+                resultFile={resultFile}
                 onDownload={onDownload}
             />
 
@@ -39,9 +45,8 @@ export default function ResultStep({
                 onClick={onReset}
                 className="bg-gray-700 hover:bg-gray-800"
             >
-                Compress Another Image
+                {resetText}
             </PrimaryButton>
-
         </div>
     );
 }

@@ -5,6 +5,34 @@ export const siteConfig = {
 
     description:
         "Free online tools for images, PDFs, developers, students and everyday tasks.",
+    url: "http://localhost:3000",
+
+    applicationName: "LifeTools",
+
+    author: "Muhammad Fadil",
+
+    creator: "Muhammad Fadil",
+
+    publisher: "LifeTools",
+
+    locale: "en_US",
+
+    twitter: "@lifetools",
+
+    ogImage: "/images/og-image.png",
+
+    keywords: [
+        "online tools",
+        "free online tools",
+        "image tools",
+        "pdf tools",
+        "compress image",
+        "resize image",
+        "developer tools",
+        "json formatter",
+        "qr code generator",
+        "life tools",
+    ],
 
     hero: {
         badge: "🚀 100% Free Online Tools",

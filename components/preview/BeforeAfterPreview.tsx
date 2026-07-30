@@ -1,47 +1,72 @@
 interface Props {
-    before: string;
-    after: string;
+    before?: string;
+    after?: string;
+
+    beforeLabel?: string;
+    afterLabel?: string;
 }
 
 export default function BeforeAfterPreview({
     before,
     after,
+    beforeLabel = "Original",
+    afterLabel = "Result",
 }: Props) {
+
     return (
+
         <div className="grid gap-6 md:grid-cols-2">
 
             <div>
 
                 <h3 className="mb-3 font-semibold">
-
-                    Original
-
+                    {beforeLabel}
                 </h3>
 
-                <img
-                    src={before}
-                    alt="Original"
-                    className="rounded-xl border"
-                />
+                {before ? (
+
+                    <img
+                        src={before}
+                        alt={beforeLabel}
+                        className="rounded-xl border w-full"
+                    />
+
+                ) : (
+
+                    <div className="flex h-64 items-center justify-center rounded-xl border text-sm text-muted-foreground">
+                        No preview
+                    </div>
+
+                )}
 
             </div>
 
             <div>
 
                 <h3 className="mb-3 font-semibold">
-
-                    Compressed
-
+                    {afterLabel}
                 </h3>
 
-                <img
-                    src={after}
-                    alt="Compressed"
-                    className="rounded-xl border"
-                />
+                {after ? (
+
+                    <img
+                        src={after}
+                        alt={afterLabel}
+                        className="rounded-xl border w-full"
+                    />
+
+                ) : (
+
+                    <div className="flex h-64 items-center justify-center rounded-xl border text-sm text-muted-foreground">
+                        No preview
+                    </div>
+
+                )}
 
             </div>
 
         </div>
+
     );
+
 }

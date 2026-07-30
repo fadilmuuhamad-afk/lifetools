@@ -1,21 +1,79 @@
+"use client";
+
+import { ReactNode } from "react";
+import clsx from "clsx";
+
 interface Props {
+
     label: string;
-    value: string;
+
+    value: ReactNode;
+
+    description?: string;
+
+    icon?: ReactNode;
+
+    className?: string;
+
 }
 
 export default function StatCard({
+
     label,
+
     value,
+
+    description,
+
+    icon,
+
+    className,
+
 }: Props) {
+
     return (
-        <div className="rounded-xl border bg-card p-4 text-center">
-            <div className="text-2xl font-bold">
+
+        <div
+            className={clsx(
+                "rounded-xl border bg-background p-4",
+                className
+            )}
+        >
+
+            {(icon || label) && (
+
+                <div className="mb-2 flex items-center gap-2">
+
+                    {icon}
+
+                    <span className="text-sm text-muted-foreground">
+
+                        {label}
+
+                    </span>
+
+                </div>
+
+            )}
+
+            <div className="text-xl font-bold">
+
                 {value}
+
             </div>
 
-            <div className="mt-1 text-sm text-muted-foreground">
-                {label}
-            </div>
+            {description && (
+
+                <p className="mt-2 text-xs text-muted-foreground">
+
+                    {description}
+
+                </p>
+
+            )}
+
         </div>
+
     );
+
 }
