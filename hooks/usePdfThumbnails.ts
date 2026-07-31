@@ -42,38 +42,27 @@ export function usePdfThumbnails(
         useState("");
 
     useEffect(() => {
-
         if (!file) {
-
             setPages([]);
-
             setError("");
-
             return;
-
         }
 
-        let cancelled = false;
+        const selectedFile: File = file;
 
-        let renderer:
-            Awaited<
-                ReturnType<
-                    typeof createPdfRenderer
-                >
-            > | null = null;
+        let cancelled = false;
+        let renderer: Awaited<
+            ReturnType<typeof createPdfRenderer>
+        > | null = null;
 
         async function load() {
-
             try {
-
                 setLoading(true);
-
                 setError("");
 
-                renderer =
-                    await createPdfRenderer(
-                        file,
-                    );
+                renderer = await createPdfRenderer(selectedFile);
+
+            
 
                 const thumbnails: PdfThumbnail[] = [];
 

@@ -30,49 +30,28 @@ export default function CompressPdfSummary({
     return (
 
         <SummaryInfo
-
+            title="Compression Summary"
             items={[
-
                 {
-
                     label: "File",
-
                     value: file.name,
-
                 },
-
                 {
-
                     label: "Pages Processed",
-
                     value:
-
                         progress.total === 0
-
                             ? "-"
-
                             : `${progress.current} / ${progress.total}`,
-
                 },
-
                 {
-
                     label: "Progress",
-
                     value: `${progress.percent}%`,
-
                 },
-
                 {
-
                     label: "Stage",
-
                     value: stage,
-
                 },
-
             ]}
-
         />
 
     );

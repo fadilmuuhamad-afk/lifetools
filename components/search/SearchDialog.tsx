@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
 import {
     Dialog,
     DialogContent,
@@ -23,10 +21,8 @@ export default function SearchDialog({
             open={open}
             onOpenChange={onOpenChange}
         >
-            <DialogContent className="max-w-2xl p-0 overflow-hidden">
-
+            <DialogContent className="max-w-2xl overflow-hidden p-0">
                 <SearchCommand />
-
             </DialogContent>
         </Dialog>
     );

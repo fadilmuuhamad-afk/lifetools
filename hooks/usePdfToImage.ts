@@ -31,28 +31,43 @@ export function usePdfToImage() {
 
     async function process() {
 
-        const {
+        if (!file || processing) {
 
-            pdfToImage,
+            return;
 
-        } = await import(
-            "@/services/pdf/pdfToImage"
-        );
+        }
 
-        const zip =
-            await pdfToImage({
+        try {
 
-                file,
+            setProcessing(true);
 
-                scale,
+            const {
+                pdfToImage,
+            } = await import(
+                "@/services/pdf/pdfToImage"
+            );
 
-                format,
+            const zip =
+                await pdfToImage({
 
-                quality,
+                    file,
 
-            });
+                    scale,
 
-        setResult(zip);
+                    format,
+
+                    quality,
+
+                });
+
+            setResult(zip);
+
+        } finally {
+
+            setProcessing(false);
+
+        }
+
     }
 
     function selectFile(

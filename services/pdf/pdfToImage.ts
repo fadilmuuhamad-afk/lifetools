@@ -96,11 +96,9 @@ export async function pdfToImage({
             viewport.height;
 
         await page.render({
-
+            canvas,
             canvasContext: context,
-
             viewport,
-
         }).promise;
 
         const blob =

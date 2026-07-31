@@ -1,8 +1,0 @@
-canvasToBlob()
-
-canvasToJpeg()
-
-canvasToWebP()
-
-resizeCanvas()
-

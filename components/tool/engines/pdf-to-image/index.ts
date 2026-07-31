@@ -1,1 +1,1 @@
-export { PdfToImageEngine } from "./PdfToImageEngine";
+export { default as PdfToImageEngine } from "./PdfToImageEngine";

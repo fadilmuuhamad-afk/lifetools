@@ -26,20 +26,21 @@ export async function savePdf(
     filename: string
 ): Promise<File> {
 
-    const bytes =
-        await pdf.save();
+    const bytes = await pdf.save({
+        useObjectStreams: true,
+    });
+
+    const buffer = new ArrayBuffer(bytes.length);
+
+    new Uint8Array(buffer).set(bytes);
 
     return new File(
-
-        [bytes],
-
+        [buffer],
         filename,
-
         {
             type: "application/pdf",
             lastModified: Date.now(),
         }
-
     );
 
 }

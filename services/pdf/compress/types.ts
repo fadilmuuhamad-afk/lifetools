@@ -10,6 +10,7 @@ export type CompressionStage =
     | "idle"
     | "opening"
     | "rendering"
+    | "encoding"
     | "building"
     | "saving";
 
@@ -20,6 +21,24 @@ export interface CompressionProgress {
     total: number;
 
     percent: number;
+
+}
+
+export interface AnalyzePdfResult {
+
+    pages: number;
+
+    fileSize: number;
+
+    estimatedImages: number;
+
+    largestImageWidth: number;
+
+    largestImageHeight: number;
+
+    recommendedLevel: CompressionLevel;
+
+    estimatedSaving: number;
 
 }
 

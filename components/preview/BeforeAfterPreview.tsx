@@ -1,3 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
+
+"use client";
+
 interface Props {
     before?: string;
     after?: string;

@@ -68,6 +68,8 @@ export default function ConverterEngine() {
             info={
                 <ImageInfo
                     file={converter.file}
+                    width={converter.imageWidth}
+                    height={converter.imageHeight}
                 />
             }
 

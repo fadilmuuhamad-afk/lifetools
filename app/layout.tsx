@@ -11,7 +11,16 @@ import WebsiteSchema
 import type { Viewport } from "next";
 
 export const viewport: Viewport = {
-  themeColor: "#2563EB",
+  themeColor: [
+    {
+      media: "(prefers-color-scheme: light)",
+      color: "#ffffff",
+    },
+    {
+      media: "(prefers-color-scheme: dark)",
+      color: "#09090b",
+    },
+  ],
   colorScheme: "light",
 };
 
@@ -43,11 +52,32 @@ export const metadata: Metadata = {
 
   publisher: siteConfig.publisher,
 
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
+
+  category: "technology",
+
+  formatDetection: {
+    telephone: false,
+    email: false,
+    address: false,
+  },
+
   manifest: "/manifest.webmanifest",
 
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 
   alternates: {

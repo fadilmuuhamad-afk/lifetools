@@ -17,7 +17,10 @@ export default function Header() {
                     LifeTools
                 </Link>
 
-                <nav className="hidden md:flex items-center gap-8">
+                <nav
+                    aria-label="Main navigation"
+                    className="hidden items-center gap-8 md:flex"
+                >
 
                     {navigation.map((item) => (
                         <Link

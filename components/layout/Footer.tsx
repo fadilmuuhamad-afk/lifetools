@@ -1,33 +1,66 @@
 import Link from "next/link";
 
 export default function Footer() {
+    const year = new Date().getFullYear();
+
     return (
         <footer className="border-t bg-white">
             <div className="mx-auto max-w-7xl px-6 py-10">
 
-                <h2 className="text-2xl font-bold text-blue-600">
-                    LifeTools
-                </h2>
+                <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
 
-                <p className="mt-2 text-gray-500">
-                    Free Online Tools for Everyday Tasks.
-                </p>
+                    <div>
 
-                <div className="mt-8 flex flex-wrap gap-6 text-sm">
+                        <h2 className="text-2xl font-bold text-blue-600">
+                            LifeTools
+                        </h2>
 
-                    <Link href="/about">About</Link>
+                        <p className="mt-2 max-w-sm text-sm text-gray-500">
+                            Free online tools that help you work faster,
+                            smarter, and entirely in your browser.
+                        </p>
 
-                    <Link href="/contact">Contact</Link>
+                    </div>
 
-                    <Link href="/privacy">Privacy</Link>
+                    <div className="grid grid-cols-2 gap-x-10 gap-y-3 text-sm">
 
-                    <Link href="/blog">Blog</Link>
+                        <Link
+                            href="/about"
+                            className="transition hover:text-blue-600"
+                        >
+                            About
+                        </Link>
+
+                        <Link
+                            href="/contact"
+                            className="transition hover:text-blue-600"
+                        >
+                            Contact
+                        </Link>
+
+                        <Link
+                            href="/privacy-policy"
+                            className="transition hover:text-blue-600"
+                        >
+                            Privacy Policy
+                        </Link>
+
+                        <Link
+                            href="/terms"
+                            className="transition hover:text-blue-600"
+                        >
+                            Terms of Service
+                        </Link>
+
+                    </div>
 
                 </div>
 
-                <p className="mt-8 text-sm text-gray-400">
-                    © 2026 LifeTools. All rights reserved.
-                </p>
+                <div className="mt-10 border-t pt-6 text-sm text-gray-500">
+
+                    © {year} LifeTools. All rights reserved.
+
+                </div>
 
             </div>
         </footer>

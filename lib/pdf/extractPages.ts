@@ -3,7 +3,7 @@ import { PDFDocument } from "pdf-lib";
 import {
     loadPdf,
     savePdf,
-} from "./utils";
+} from "@/services/pdf/core";
 
 export interface ExtractPagesOptions {
 

@@ -20,15 +20,13 @@ export default function SearchCommand() {
     const [query, setQuery] =
         useState("");
 
+    const hasQuery = query.trim().length > 0;
+
     const results = useMemo(() => {
-
-        if (!query.trim()) {
-            return getPopularTools();
-        }
-
-        return searchTools(query);
-
-    }, [query]);
+        return hasQuery
+            ? searchTools(query)
+            : getPopularTools();
+    }, [hasQuery, query]);
 
     const router = useRouter();
 

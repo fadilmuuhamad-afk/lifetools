@@ -1,5 +1,3 @@
-import { RGB } from "pdf-lib";
-
 export type WatermarkType =
     | "text"
     | "image";

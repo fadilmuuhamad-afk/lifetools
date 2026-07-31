@@ -12,7 +12,9 @@ export default function QpdfTestPage() {
 
             const runner = await getQpdfRunner();
 
-            console.log(runner);
+            if (!runner) {
+                throw new Error("Failed to create QPDF runner.");
+            }
 
             setStatus("Runner created successfully ✅");
         } catch (error) {
@@ -27,7 +29,7 @@ export default function QpdfTestPage() {
     }
 
     return (
-        <main className="p-8 space-y-6">
+        <main className="space-y-6 p-8">
             <h1 className="text-2xl font-bold">
                 QPDF Runner Test
             </h1>

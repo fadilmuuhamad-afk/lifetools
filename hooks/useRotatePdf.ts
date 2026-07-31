@@ -26,10 +26,6 @@ export function useRotatePdf() {
 
         download,
 
-        error,
-
-        setError,
-
         clearError,
 
         clearResult,

@@ -4,7 +4,14 @@ import { Search } from "lucide-react";
 
 import { useState } from "react";
 
-import SearchDialog from "./SearchDialog";
+import dynamic from "next/dynamic";
+
+const SearchDialog = dynamic(
+    () => import("./SearchDialog"),
+    {
+        loading: () => null,
+    }
+);
 
 export default function HeroSearch() {
 
@@ -14,6 +21,8 @@ export default function HeroSearch() {
     return (
         <>
             <button
+                type="button"
+                aria-label="Open tool search"
                 onClick={() => setOpen(true)}
                 className="
                 mx-auto
@@ -58,10 +67,12 @@ export default function HeroSearch() {
 
             </button>
 
-            <SearchDialog
-                open={open}
-                onOpenChange={setOpen}
-            />
+            {open && (
+                <SearchDialog
+                    open={open}
+                    onOpenChange={setOpen}
+                />
+            )}
         </>
     );
 

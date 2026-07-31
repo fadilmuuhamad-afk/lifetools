@@ -6,7 +6,7 @@ import { getPopularTools } from "@/lib/tools";
 
 export default function PopularTools() {
     const tools = getPopularTools();
-    console.log(tools);
+
 
     return (
         <Section>

@@ -102,7 +102,10 @@ export default function useImageFlip() {
 
         if (!result) return;
 
-        downloadFile(result);
+        downloadFile(
+            result,
+            result.name
+        );
 
     }
 

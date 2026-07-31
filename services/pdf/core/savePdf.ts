@@ -1,33 +1,36 @@
-import { PDFDocument } from "pdf-lib";
+    import { PDFDocument } from "pdf-lib";
 
-export async function savePdf(
+    export async function savePdf(
 
-    pdf: PDFDocument,
+        pdf: PDFDocument,
 
-    name: string,
+        name: string,
 
-) {
+    ) {
 
-    const bytes =
+        const bytes =
+            await pdf.save({
 
-        await pdf.save({
+                useObjectStreams: true,
 
-            useObjectStreams: true,
+            });
 
-        });
+        const buffer = new ArrayBuffer(bytes.length);
 
-    return new File(
+        new Uint8Array(buffer).set(bytes);
 
-        [bytes],
+        return new File(
 
-        name,
+            [buffer],
 
-        {
+            name,
 
-            type: "application/pdf",
+            {
 
-        },
+                type: "application/pdf",
 
-    );
+            },
 
-}
+        );
+
+    }

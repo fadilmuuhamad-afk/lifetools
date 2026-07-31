@@ -4,10 +4,6 @@ import { useState } from "react";
 
 import { mergePdf } from "@/services/pdf/mergePdf";
 
-import { downloadFile } from "@/utils/download";
-
-import { useObjectUrl } from "./useObjectUrl";
-
 import { usePdfTool }
     from "./usePdfTool";
 
@@ -17,27 +13,14 @@ export function useMergePdf() {
         useState<File[]>([]);
 
     const {
-
         result,
-
         setResult,
-
         processing,
-
         setProcessing,
-
         resultUrl,
-
         download,
-
-        error,
-
-        setError,
-
         clearResult,
-
         clearError,
-
     } = usePdfTool();
 
     async function process() {

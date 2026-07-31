@@ -39,6 +39,8 @@ export default function BreadcrumbSchema({
                 "@type": "ListItem",
                 position: 3,
                 name: toolName,
+                item:
+                    `${siteConfig.url}/${categorySlug}`
             },
 
         ],

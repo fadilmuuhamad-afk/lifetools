@@ -25,7 +25,7 @@ export default function Hero() {
 
                     {/* Title */}
 
-                    <h1 className="ext-4xl font-bold leading-tight sm:text-5xl  lg:text-6xl">
+                    <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
 
                         {siteConfig.hero.title}
 

@@ -14,4 +14,6 @@ export interface Category {
     href: string;
 
     icon: LucideIcon;
+
+    comingSoon: boolean;
 }

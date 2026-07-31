@@ -2,29 +2,32 @@ import { MetadataRoute } from "next";
 
 import { tools } from "@/data";
 import { categories } from "@/data/categories";
-
-const BASE_URL = "http://localhost:3000";
+import { siteConfig } from "@/config/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
 
+    const now = new Date();
+
     const toolPages = tools.map((tool) => ({
-        url: `${BASE_URL}/tool/${tool.category}/${tool.slug}`,
-        lastModified: new Date(),
+        url: `${siteConfig.url}/tool/${tool.category}/${tool.slug}`,
+        lastModified: now,
         changeFrequency: "weekly" as const,
         priority: 0.8,
     }));
 
     const categoryPages = categories.map((category) => ({
-        url: `${BASE_URL}/${category.slug}`,
-        lastModified: new Date(),
-        changeFrequency: "weekly" as const,
-        priority: 0.7,
+        url: `${siteConfig.url}/${category.slug}`,
+        lastModified: now,
+        changeFrequency: category.comingSoon
+            ? ("monthly" as const)
+            : ("weekly" as const),
+        priority: category.comingSoon ? 0.5 : 0.7,
     }));
 
     return [
         {
-            url: BASE_URL,
-            lastModified: new Date(),
+            url: siteConfig.url,
+            lastModified: now,
             changeFrequency: "daily",
             priority: 1,
         },

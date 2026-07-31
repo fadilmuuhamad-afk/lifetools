@@ -24,10 +24,6 @@ export function useSplitPdf() {
 
         download,
 
-        error,
-
-        setError,
-
         clearError,
 
         clearResult,

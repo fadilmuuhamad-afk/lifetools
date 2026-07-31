@@ -2,21 +2,17 @@
 
 import { initPdfWorker } from "./worker";
 
-import type { PDFDocumentProxy } from "pdfjs-dist";
-
 import {
-    createRenderer,
+    createPdfRenderer,
     type PdfRenderer,
 } from "./PdfRenderer";
 
 export interface PdfDocument {
-
     readonly pageCount: number;
 
-    createRenderer(): PdfRenderer;
+    createRenderer(): Promise<PdfRenderer>;
 
     destroy(): Promise<void>;
-
 }
 
 export async function openPdf(
@@ -41,27 +37,17 @@ export async function openPdf(
         }).promise;
 
     return {
-
         get pageCount() {
-
             return pdf.numPages;
-
         },
 
-        createRenderer() {
-
-            return createRenderer(pdf);
-
+        async createRenderer() {
+            return createPdfRenderer(file);
         },
 
         async destroy() {
-
             pdf.cleanup();
-
-            await pdf.destroy();
-
         },
-
     };
 
 }

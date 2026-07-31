@@ -8,6 +8,10 @@ interface Props {
 export default function ToolSchema({
     tool,
 }: Props) {
+
+    const url =
+        `${siteConfig.url}/tool/${tool.category}/${tool.slug}`;
+
     const schema = {
         "@context": "https://schema.org",
 
@@ -15,17 +19,24 @@ export default function ToolSchema({
 
         name: tool.title,
 
+        url,
+
         description: tool.description,
 
         applicationCategory:
             "UtilitiesApplication",
 
-        operatingSystem: "Any",
+        operatingSystem:
+            "Any",
 
         browserRequirements:
             "Requires JavaScript",
 
-        url: `${siteConfig.url}/tool/${tool.category}/${tool.slug}`,
+        inLanguage:
+            siteConfig.locale,
+
+        isAccessibleForFree:
+            true,
 
         offers: {
             "@type": "Offer",
@@ -33,9 +44,16 @@ export default function ToolSchema({
             priceCurrency: "USD",
         },
 
+        creator: {
+            "@type": "Organization",
+            name: siteConfig.creator,
+            url: siteConfig.url,
+        },
+
         publisher: {
             "@type": "Organization",
             name: siteConfig.publisher,
+            url: siteConfig.url,
         },
     };
 

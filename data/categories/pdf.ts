@@ -1,4 +1,4 @@
-import { Tool } from "../types";
+import type { Tool } from "@/types/tool";
 
 export const pdfTools: Tool[] = [
 

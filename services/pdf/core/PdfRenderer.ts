@@ -114,11 +114,9 @@ export async function createPdfRenderer(
                 viewport.height;
 
             await page.render({
-
+                canvas,
                 canvasContext: context,
-
                 viewport,
-
             }).promise;
 
             page.cleanup();
