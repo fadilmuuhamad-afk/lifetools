@@ -11,4 +11,8 @@ export const navigation = [
         title: "All Tools",
         href: "/tools",
     },
+    {
+        title: "Resources",
+        href: "/resources",
+    },
 ];
