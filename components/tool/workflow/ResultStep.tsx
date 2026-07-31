@@ -1,6 +1,7 @@
 import BeforeAfterPreview from "@/components/preview/BeforeAfterPreview";
 import ResultCard from "@/components/workspace/ResultCard";
 import PrimaryButton from "@/components/ui/PrimaryButton";
+import RecommendedResources from "@/components/monetization/RecommendedResources";
 
 interface Props {
     originalFile: File;
@@ -47,6 +48,8 @@ export default function ResultStep({
             >
                 {resetText}
             </PrimaryButton>
+
+            <RecommendedResources />
         </div>
     );
 }

@@ -66,3 +66,29 @@ export function trackSearch(
         search_term: keyword,
     });
 }
+
+export function trackMonetizationClick(
+    provider: string,
+    placement: string,
+    destination?: string
+) {
+    trackEvent("monetization_click", {
+        provider,
+        placement,
+        destination,
+    });
+    
+}
+
+export function trackOutboundClick(
+    provider: string,
+    placement: string,
+    destination: string
+) {
+    trackEvent("outbound_click", {
+        provider,
+        placement,
+        destination,
+    });
+}
+
