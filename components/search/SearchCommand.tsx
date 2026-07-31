@@ -3,6 +3,8 @@
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getPopularTools } from "@/lib/tools";
+import { trackSearch }
+    from "@/lib/analytics";
 
 import {
     Command,
@@ -57,6 +59,7 @@ export default function SearchCommand() {
                             <CommandItem
                                 key={tool.id}
                                 onSelect={() => {
+                                    trackSearch(query);
                                     router.push(
                                         `/tool/${tool.category}/${tool.slug}`
                                     );

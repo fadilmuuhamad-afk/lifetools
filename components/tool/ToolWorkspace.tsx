@@ -1,5 +1,8 @@
 "use client";
-
+import { useEffect } from "react";
+import {
+    trackToolOpen,
+} from "@/lib/analytics";
 import { workspaceRegistry } from "./engines";
 
 import type { Tool } from "@/types/tool";
@@ -13,6 +16,13 @@ export default function ToolWorkspace({ tool }: Props) {
         workspaceRegistry[
         tool.slug as keyof typeof workspaceRegistry
         ];
+
+    useEffect(() => {
+        trackToolOpen(
+            tool.category,
+            tool.slug
+        );
+    }, [tool.category, tool.slug]);
 
     if (!Engine) {
         return (

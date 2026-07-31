@@ -14,6 +14,9 @@ import WatermarkPdfSummary from "./WatermarkPdfSummary";
 import PdfPreview from "@/components/tool/shared/PdfPreview";
 import WatermarkOverlay from "@/components/tool/shared/WatermarkOverlay";
 
+import ToolWorkflow
+    from "@/components/tool/base/ToolWorkflow";
+
 export default function WatermarkPdfEngine() {
 
     const {
@@ -65,181 +68,100 @@ export default function WatermarkPdfEngine() {
 
     } = useWatermarkPdf();
 
-    if (result && file) {
-
-        return (
-
-            <ResultStep
-
-                originalFile={file}
-
-                resultFile={result}
-
-                originalUrl=""
-
-                resultUrl={resultUrl}
-
-                onDownload={download}
-
-                onReset={reset}
-
-            />
-
-        );
-
-    }
-
-    if (!file) {
-
-        return (
-
-            <UploadStep
-
-                accept={{
-
-                    "application/pdf": [".pdf"],
-
-                }}
-
-                onFile={selectFile}
-
-                buttonText="Select PDF"
-
-                helperText="Upload a PDF document"
-
-            />
-
-        );
-
-    }
-
     return (
-
-        <EditorLayout
-
-            preview={
-
-                <PdfPreview
-
-                    file={file}
-
-                    overlay={
-
-                        type === "text"
-
-                            ? (
-
-                                <WatermarkOverlay
-
-                                    text={text}
-
-                                    fontSize={fontSize}
-
-                                    opacity={opacity}
-
-                                    rotation={rotation}
-
-                                    position={position}
-
-                                />
-
-                            )
-
-                            : null
-
+        <ToolWorkflow
+            hasFile={!!file}
+            hasResult={!!result}
+            upload={
+                <UploadStep
+                    accept={{
+                        "application/pdf": [".pdf"],
+                    }}
+                    onFile={selectFile}
+                    buttonText="Select PDF"
+                    helperText="Upload a PDF document"
+                />
+            }
+            result={
+                file && result ? (
+                    <ResultStep
+                        originalFile={file}
+                        resultFile={result}
+                        originalUrl=""
+                        resultUrl={resultUrl}
+                        onDownload={download}
+                        onReset={reset}
+                    />
+                ) : null
+            }
+            editor={
+                <EditorLayout
+                    preview={
+                        <PdfPreview
+                            file={file!}
+                            overlay={
+                                type === "text" ? (
+                                    <WatermarkOverlay
+                                        text={text}
+                                        fontSize={fontSize}
+                                        opacity={opacity}
+                                        rotation={rotation}
+                                        position={position}
+                                    />
+                                ) : null
+                            }
+                        />
                     }
-
+                    controls={
+                        <WatermarkPdfControls
+                            type={type}
+                            setType={setType}
+                            text={text}
+                            setText={setText}
+                            image={image}
+                            selectImage={selectImage}
+                            fontSize={fontSize}
+                            setFontSize={setFontSize}
+                            width={width}
+                            setWidth={setWidth}
+                            height={height}
+                            setHeight={setHeight}
+                            opacity={opacity}
+                            setOpacity={setOpacity}
+                            rotation={rotation}
+                            setRotation={setRotation}
+                            position={position}
+                            setPosition={setPosition}
+                            error={error}
+                        />
+                    }
+                    summary={
+                        <WatermarkPdfSummary
+                            fileName={file!.name}
+                            type={type}
+                            text={text}
+                            image={image}
+                            fontSize={fontSize}
+                            width={width}
+                            height={height}
+                            opacity={opacity}
+                            rotation={rotation}
+                            position={position}
+                        />
+                    }
+                    actions={
+                        <EditorActions
+                            processing={processing}
+                            processingText="Adding Watermark..."
+                            actionText="Add Watermark"
+                            disabled={processing}
+                            onAction={process}
+                            onReset={reset}
+                        />
+                    }
                 />
-
             }
-
-            controls={
-
-                <WatermarkPdfControls
-
-                    type={type}
-                    setType={setType}
-
-                    text={text}
-                    setText={setText}
-
-                    image={image}
-                    selectImage={selectImage}
-
-                    fontSize={fontSize}
-                    setFontSize={setFontSize}
-
-                    width={width}
-                    setWidth={setWidth}
-
-                    height={height}
-                    setHeight={setHeight}
-
-                    opacity={opacity}
-                    setOpacity={setOpacity}
-
-                    rotation={rotation}
-                    setRotation={setRotation}
-
-                    position={position}
-                    setPosition={setPosition}
-
-                    error={error}
-
-                />
-
-            }
-
-            summary={
-
-                <WatermarkPdfSummary
-
-                    fileName={file.name}
-
-                    type={type}
-
-                    text={text}
-
-                    image={image}
-
-                    fontSize={fontSize}
-
-                    width={width}
-
-                    height={height}
-
-                    opacity={opacity}
-
-                    rotation={rotation}
-
-                    position={position}
-
-                />
-
-            }
-
-            actions={
-
-                <EditorActions
-
-                    processing={processing}
-
-                    processingText="Adding Watermark..."
-
-                    actionText="Add Watermark"
-
-                    disabled={processing}
-
-                    onAction={process}
-
-                    onReset={reset}
-
-                />
-
-            }
-
         />
-
     );
 
 }
