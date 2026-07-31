@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 import { Geist } from "next/font/google";
 import { siteConfig } from "@/config/site";
@@ -126,6 +127,10 @@ export default function RootLayout({
             richColors
           />
         </ThemeProvider>
+        
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        )}
       </body>
     </html>
   );
