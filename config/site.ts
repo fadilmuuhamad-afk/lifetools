@@ -5,7 +5,10 @@ export const siteConfig = {
 
     description:
         "Free online tools for images, PDFs, developers, students and everyday tasks.",
-    url: "http://localhost:3000",
+
+    url:
+        process.env.NEXT_PUBLIC_SITE_URL ??
+        "http://localhost:3000",
 
     applicationName: "LifeTools",
 
