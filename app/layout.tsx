@@ -69,6 +69,10 @@ export const metadata: Metadata = {
 
   manifest: "/manifest.webmanifest",
 
+  verification: {
+    google: "H2sastTZrzgcfUh3txwjf5rgQJ6qQayccadhSMEBYT4",
+  },
+
   robots: {
     index: true,
     follow: true,
@@ -127,7 +131,7 @@ export default function RootLayout({
             richColors
           />
         </ThemeProvider>
-        
+
         {process.env.NEXT_PUBLIC_GA_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         )}
