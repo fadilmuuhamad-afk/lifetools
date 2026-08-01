@@ -18,7 +18,20 @@ export default function CategoryCard({
     return (
         <Link
             href={href}
-            className="group relative rounded-2xl border bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+            className="
+                group
+                relative
+                rounded-2xl
+                border
+                border-border
+                bg-card
+                p-6
+                shadow-sm
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:shadow-xl
+            "
         >
             {comingSoon && (
                 <span className="absolute right-4 top-4 rounded-full bg-amber-100 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-amber-700">
@@ -28,11 +41,23 @@ export default function CategoryCard({
 
             <Icon className="mb-4 h-10 w-10 text-blue-600 transition-transform duration-300 group-hover:scale-110" />
 
-            <h3 className="mb-2 text-xl font-semibold">
+            <h3
+                className="
+                    mb-2
+                    text-xl
+                    font-semibold
+                    text-foreground
+                "
+            >
                 {title}
             </h3>
 
-            <p className="text-sm text-gray-500">
+            <p
+                className="
+                text-sm
+                text-muted-foreground
+            "
+            >
                 {description}
             </p>
         </Link>
