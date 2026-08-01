@@ -9,7 +9,16 @@ export default function Hero() {
         <Section className="relative overflow-hidden">
 
             {/* Background Gradient */}
-            <div className="absolute inset-0 -z-10 bg-gradient-to-b from-blue-50 via-white to-white" />
+            <div className="
+            absolute inset-0 -z-10
+            bg-gradient-to-b
+            from-blue-50
+            via-background
+            to-background
+            dark:from-slate-900
+            dark:via-background
+            dark:to-background
+            "/>
 
             <Container>
 
@@ -17,7 +26,21 @@ export default function Hero() {
 
                     {/* Badge */}
 
-                    <div className="inline-flex rounded-full border bg-white px-4 py-2 text-sm shadow-sm">
+                    <div
+                        className="
+                    inline-flex
+                    rounded-full
+                    border
+                    border-border
+                    bg-background/80
+                    px-4
+                    py-2
+                    text-sm
+                    text-foreground
+                    shadow-sm
+                    backdrop-blur
+                    "
+                    >
 
                         {siteConfig.hero.badge}
 
@@ -41,8 +64,15 @@ export default function Hero() {
 
                     {/* Description */}
 
-                    <p className="text-base leading-7 sm:text-lg">
-
+                    <p
+                        className="
+                    mt-6
+                    text-base
+                    leading-7
+                    text-muted-foreground
+                    sm:text-lg
+                    "
+                    >
                         {siteConfig.hero.description}
 
                     </p>
@@ -53,13 +83,20 @@ export default function Hero() {
 
                             <div key={stat.label}>
 
-                                <h3 className="text-3xl font-bold">
+                                <h3 className="text-3xl font-bold text-foreground">
 
                                     {stat.value}
 
                                 </h3>
 
-                                <p className="text-base leading-7 sm:text-lg">
+                                <p
+                                    className="
+                                text-base
+                                leading-7
+                                text-muted-foreground
+                                sm:text-lg
+                                "
+                                >
 
                                     {stat.label}
 

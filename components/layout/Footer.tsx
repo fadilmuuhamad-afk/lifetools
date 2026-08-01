@@ -4,7 +4,13 @@ export default function Footer() {
     const year = new Date().getFullYear();
 
     return (
-        <footer className="border-t bg-white">
+        <footer
+            className="
+            border-t
+            border-border
+            bg-background
+            "
+        >
             <div className="mx-auto max-w-7xl px-6 py-10">
 
                 <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
@@ -15,7 +21,7 @@ export default function Footer() {
                             LifeTools
                         </h2>
 
-                        <p className="mt-2 max-w-sm text-sm text-gray-500">
+                        <p className="mt-2 max-w-sm text-sm text-muted-foreground">
                             Free online tools that help you work faster,
                             smarter, and entirely in your browser.
                         </p>
@@ -26,7 +32,11 @@ export default function Footer() {
 
                         <Link
                             href="/about"
-                            className="transition hover:text-blue-600"
+                            className="
+                        text-muted-foreground
+                        transition-colors
+                        hover:text-blue-600
+                        "
                         >
                             About
                         </Link>
@@ -56,7 +66,14 @@ export default function Footer() {
 
                 </div>
 
-                <div className="mt-10 border-t pt-6 text-sm text-gray-500">
+                <div className="
+                mt-10
+                border-t
+                border-border
+                pt-6
+                text-sm
+                text-muted-foreground
+                ">
 
                     © {year} LifeTools. All rights reserved.
 

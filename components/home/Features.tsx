@@ -30,7 +30,7 @@ const features = [
 
 export default function Features() {
     return (
-        <section className="bg-slate-50 py-20">
+        <section className="bg-muted/40 py-20">
             <div className="mx-auto max-w-7xl px-6">
 
                 <div className="mb-12 text-center">
@@ -38,7 +38,12 @@ export default function Features() {
                         Why Choose LifeTools?
                     </h2>
 
-                    <p className="mt-3 text-gray-500">
+                    <p
+                        className="
+                        mt-3
+                        text-muted-foreground
+                        "
+                    >
                         Everything designed to make your work easier.
                     </p>
                 </div>
@@ -48,7 +53,15 @@ export default function Features() {
                     {features.map((feature) => (
                         <div
                             key={feature.title}
-                            className="rounded-2xl bg-white p-8 shadow-sm"
+                            className="
+                        rounded-2xl
+                        border
+                        bg-card
+                        p-8
+                        shadow-sm
+                        transition
+                        hover:shadow-lg
+                        "
                         >
                             <feature.icon className="mb-4 h-10 w-10 text-blue-600" />
 
@@ -56,7 +69,7 @@ export default function Features() {
                                 {feature.title}
                             </h3>
 
-                            <p className="mt-2 text-sm text-gray-500">
+                            <p className="mt-2 text-sm text-muted-foreground">
                                 {feature.description}
                             </p>
                         </div>
