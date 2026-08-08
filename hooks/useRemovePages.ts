@@ -48,7 +48,10 @@ export function useRemovePages() {
 
         clearError,
 
-    } = usePdfTool();
+    } = usePdfTool(
+        "pdf",
+        "remove-pages",
+    );
 
     async function process() {
 

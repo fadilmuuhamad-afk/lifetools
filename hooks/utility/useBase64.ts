@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import { useClipboard } from "@/hooks/common/useClipboard";
+
 import {
 
     encodeBase64,
@@ -23,6 +25,11 @@ export function useBase64() {
     const [error, setError] =
 
         useState("");
+
+    const { copy: copyText } = useClipboard({
+        category: "developer",
+        tool: "base64-encoder-decoder",
+    });
 
     function encode() {
 
@@ -81,19 +88,11 @@ export function useBase64() {
     }
 
     async function copy() {
-
         if (!output) {
-
             return;
-
         }
 
-        await navigator.clipboard.writeText(
-
-            output,
-
-        );
-
+        await copyText(output);
     }
 
     function download() {

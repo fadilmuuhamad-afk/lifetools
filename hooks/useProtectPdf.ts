@@ -7,7 +7,10 @@ import { usePdfTool } from "./usePdfTool";
 
 export function useProtectPdf() {
 
-    const pdf = usePdfTool();
+    const pdf = usePdfTool(
+        "pdf",
+        "protect-pdf",
+    );
 
     const [file, setFile] =
         useState<File | null>(null);

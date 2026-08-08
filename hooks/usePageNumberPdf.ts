@@ -14,7 +14,10 @@ import type {
 
 export function usePageNumberPdf() {
 
-    const tool = usePdfTool();
+    const tool = usePdfTool(
+        "pdf",
+        "page-number-pdf",
+    );
 
     const [file, setFile] =
         useState<File | null>(null);

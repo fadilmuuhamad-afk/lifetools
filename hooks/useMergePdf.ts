@@ -21,7 +21,10 @@ export function useMergePdf() {
         download,
         clearResult,
         clearError,
-    } = usePdfTool();
+    } = usePdfTool(
+        "pdf",
+        "merge-pdf",
+    );
 
     async function process() {
 

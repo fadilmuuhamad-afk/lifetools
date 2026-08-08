@@ -14,7 +14,10 @@ import type {
 
 export function useCompressPdf() {
 
-    const tool = usePdfTool();
+    const tool = usePdfTool(
+        "pdf",
+        "compress-pdf",
+    );
 
     const [file, setFile] =
         useState<File | null>(null);

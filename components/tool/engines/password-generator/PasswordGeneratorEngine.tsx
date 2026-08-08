@@ -14,6 +14,7 @@ import PrimaryButton from "@/components/ui/PrimaryButton";
 
 import PasswordGeneratorControls from "./PasswordGeneratorControls";
 import PasswordGeneratorResult from "./PasswordGeneratorResult";
+import { useClipboard } from "@/hooks/common/useClipboard";
 
 export default function PasswordGeneratorEngine() {
 
@@ -34,6 +35,8 @@ export default function PasswordGeneratorEngine() {
 
     const [password, setPassword] =
         useState("");
+
+        
 
     const strength =
         useMemo(() => {
@@ -72,6 +75,11 @@ export default function PasswordGeneratorEngine() {
 
         ]);
 
+    const { copy } = useClipboard({
+        category: "developer",
+        tool: "password-generator",
+    });
+
     function handleGenerate() {
 
         const value =
@@ -94,19 +102,11 @@ export default function PasswordGeneratorEngine() {
     }
 
     async function copyPassword() {
-
         if (!password) {
-
             return;
-
         }
 
-        await navigator.clipboard.writeText(
-
-            password,
-
-        );
-
+        await copy(password);
     }
 
     return (

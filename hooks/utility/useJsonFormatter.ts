@@ -10,6 +10,8 @@ import {
 
 } from "@/services/utility/json";
 
+import { useClipboard } from "@/hooks/common/useClipboard";
+
 export function useJsonFormatter() {
 
     const [input, setInput] =
@@ -23,6 +25,11 @@ export function useJsonFormatter() {
     const [error, setError] =
 
         useState("");
+
+    const { copy: copyText } = useClipboard({
+        category: "developer",
+        tool: "json-formatter",
+    });
 
     function format() {
 
@@ -65,15 +72,11 @@ export function useJsonFormatter() {
     }
 
     async function copy() {
+        if (!output) {
+            return;
+        }
 
-        if (!output) return;
-
-        await navigator.clipboard.writeText(
-
-            output,
-
-        );
-
+        await copyText(output);
     }
 
     function download() {

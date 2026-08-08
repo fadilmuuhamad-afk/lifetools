@@ -30,7 +30,10 @@ export function useRotatePdf() {
 
         clearResult,
 
-    } = usePdfTool();
+    } = usePdfTool(
+        "pdf",
+        "rotate-pdf",
+    );
 
     async function process() {
 

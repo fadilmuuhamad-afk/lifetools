@@ -7,7 +7,10 @@ import { usePdfTool } from "./usePdfTool";
 
 export function useUnlockPdf() {
 
-    const pdf = usePdfTool();
+    const pdf = usePdfTool(
+        "pdf",
+        "unlock-pdf",
+    );
 
     const [file, setFile] =
         useState<File | null>(null);

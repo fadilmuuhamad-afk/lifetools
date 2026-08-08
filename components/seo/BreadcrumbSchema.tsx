@@ -5,12 +5,14 @@ interface Props {
     categoryName: string;
     categorySlug: string;
     toolName: string;
+    toolSlug: string;
 }
 
 export default function BreadcrumbSchema({
     categoryName,
     categorySlug,
     toolName,
+    toolSlug,
 }: Props) {
 
     const schema = {
@@ -40,9 +42,8 @@ export default function BreadcrumbSchema({
                 position: 3,
                 name: toolName,
                 item:
-                    `${siteConfig.url}/${categorySlug}`
+                    `${siteConfig.url}/tool/${categorySlug}/${toolSlug}`,
             },
-
         ],
     };
 

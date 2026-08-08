@@ -4,7 +4,6 @@ import { useState } from "react";
 
 import { usePdfTool } from "./usePdfTool";
 
-import { trackToolUse } from "@/lib/analytics";
 
 import {
     watermarkPdf,
@@ -15,12 +14,14 @@ import type {
     WatermarkType,
 } from "@/services/pdf/watermark";
 
-const CATEGORY = "pdf";
-const TOOL = "watermark-pdf";
+
 
 export function useWatermarkPdf() {
 
-    const tool = usePdfTool();
+    const tool = usePdfTool(
+        "pdf",
+        "watermark-pdf",
+    );
 
     const [file, setFile] =
         useState<File | null>(null);
@@ -143,10 +144,7 @@ export function useWatermarkPdf() {
 
             tool.setResult(result);
 
-            trackToolUse(
-                CATEGORY,
-                TOOL
-            );
+            
 
             
 

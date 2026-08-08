@@ -3,12 +3,18 @@
 import { useState } from "react";
 
 import { generateUuid } from "@/services/utility/uuid";
+import { useClipboard } from "@/hooks/common/useClipboard";
 
 export function useUuidGenerator() {
 
     const [count, setCount] = useState(10);
 
     const [uuids, setUuids] = useState<string[]>([]);
+
+    const { copy: copyText } = useClipboard({
+        category: "developer",
+        tool: "uuid-generator",
+    });
 
     function generate() {
 
@@ -23,23 +29,13 @@ export function useUuidGenerator() {
     }
 
     async function copy(uuid: string) {
-
-        await navigator.clipboard.writeText(
-
-            uuid,
-
-        );
-
+        await copyText(uuid);
     }
 
     async function copyAll() {
-
-        await navigator.clipboard.writeText(
-
+        await copyText(
             uuids.join("\n"),
-
         );
-
     }
 
     return {

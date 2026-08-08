@@ -4,8 +4,12 @@ import { useState } from "react";
 
 import { downloadFile } from "@/utils/download";
 import { useObjectUrl } from "./useObjectUrl";
+import { trackDownload } from "@/lib/analytics";
 
-export function usePdfTool() {
+export function usePdfTool(
+    category: string,
+    tool: string,
+) {
 
     const [result, setResult] =
         useState<File | null>(null);
@@ -20,16 +24,15 @@ export function usePdfTool() {
         useObjectUrl(result);
 
     function download() {
-
         if (!result) {
-
             return;
-
         }
 
         downloadFile(result);
 
+        trackDownload(category, tool);
     }
+    
 
     function clearResult() {
 

@@ -11,6 +11,12 @@ import Breadcrumb from "@/components/seo/Breadcrumb";
 import ToolSchema from "@/components/seo/ToolSchema";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 
+import RecommendedResources
+    from "@/components/monetization/RecommendedResources";
+
+import FAQSchema from "@/components/seo/FAQSchema";
+import { toolContentData } from "@/components/tool/content/toolContentData";
+
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 
@@ -136,16 +142,24 @@ export default async function ToolPage({
     const related = getRelatedTools(category, slug);
     const categoryInfo =
         getCategoryById(category);
+    const content = toolContentData[tool.slug];
 
     return (
         <>
             <ToolSchema tool={tool} />
+
+            {content && (
+                <FAQSchema
+                    items={content.faq}
+                />
+            )}
 
             {categoryInfo && (
                 <BreadcrumbSchema
                     categoryName={categoryInfo.title}
                     categorySlug={categoryInfo.slug}
                     toolName={tool.title}
+                    toolSlug={tool.slug}
                 />
             )}
 
@@ -166,6 +180,8 @@ export default async function ToolPage({
                         <RelatedTools tools={related} />
 
                         <AdPlaceholder />
+
+                        <RecommendedResources />
                     </>
                 }
             >

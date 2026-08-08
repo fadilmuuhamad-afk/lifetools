@@ -42,7 +42,10 @@ export function useExtractPages() {
 
         clearResult,
 
-    } = usePdfTool();
+    } = usePdfTool(
+        "pdf",
+        "extract-pages",
+    );
 
     async function process() {
 

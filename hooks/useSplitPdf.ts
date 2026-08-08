@@ -28,7 +28,10 @@ export function useSplitPdf() {
 
         clearResult,
 
-    } = usePdfTool();
+    } = usePdfTool(
+        "pdf",
+        "split-pdf",
+    );
 
     async function process() {
 
