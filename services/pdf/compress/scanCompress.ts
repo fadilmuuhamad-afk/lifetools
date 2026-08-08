@@ -114,19 +114,39 @@ export async function scanCompress(
             "saving",
         );
 
-        return await savePdf(
+        const result =
+            await savePdf(
+                output,
+                options.file.name.replace(
+                    /\.pdf$/i,
+                    "-compressed.pdf",
+                ),
+            );
 
-            output,
+        /*
+         * Compression should never make the
+         * resulting file larger.
+         *
+         * If rasterization produced a larger
+         * file, keep the original instead.
+         */
+        if (
+            result.size >=
+            options.file.size
+        ) {
+            return new File(
+                [await options.file.arrayBuffer()],
+                options.file.name.replace(
+                    /\.pdf$/i,
+                    "-compressed.pdf",
+                ),
+                {
+                    type: "application/pdf",
+                },
+            );
+        }
 
-            options.file.name.replace(
-
-                /\.pdf$/i,
-
-                "-compressed.pdf",
-
-            ),
-
-        );
+        return result;
 
     } catch (error) {
 

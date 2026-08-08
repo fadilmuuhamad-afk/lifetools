@@ -8,6 +8,8 @@ interface Props {
 
     beforeLabel?: string;
     afterLabel?: string;
+
+    previewType?: "image" | "pdf";
 }
 
 export default function BeforeAfterPreview({
@@ -15,10 +17,40 @@ export default function BeforeAfterPreview({
     after,
     beforeLabel = "Original",
     afterLabel = "Result",
+    previewType = "image",
 }: Props) {
+    function renderPreview(
+        url: string | undefined,
+        label: string
+    ) {
+        if (!url) {
+            return (
+                <div className="flex h-64 items-center justify-center rounded-xl border text-sm text-muted-foreground">
+                    No preview
+                </div>
+            );
+        }
+
+        if (previewType === "pdf") {
+            return (
+                <iframe
+                    src={url}
+                    title={label}
+                    className="h-96 w-full rounded-xl border bg-white"
+                />
+            );
+        }
+
+        return (
+            <img
+                src={url}
+                alt={label}
+                className="w-full rounded-xl border"
+            />
+        );
+    }
 
     return (
-
         <div className="grid gap-6 md:grid-cols-2">
 
             <div>
@@ -27,21 +59,7 @@ export default function BeforeAfterPreview({
                     {beforeLabel}
                 </h3>
 
-                {before ? (
-
-                    <img
-                        src={before}
-                        alt={beforeLabel}
-                        className="rounded-xl border w-full"
-                    />
-
-                ) : (
-
-                    <div className="flex h-64 items-center justify-center rounded-xl border text-sm text-muted-foreground">
-                        No preview
-                    </div>
-
-                )}
+                {renderPreview(before, beforeLabel)}
 
             </div>
 
@@ -51,26 +69,10 @@ export default function BeforeAfterPreview({
                     {afterLabel}
                 </h3>
 
-                {after ? (
-
-                    <img
-                        src={after}
-                        alt={afterLabel}
-                        className="rounded-xl border w-full"
-                    />
-
-                ) : (
-
-                    <div className="flex h-64 items-center justify-center rounded-xl border text-sm text-muted-foreground">
-                        No preview
-                    </div>
-
-                )}
+                {renderPreview(after, afterLabel)}
 
             </div>
 
         </div>
-
     );
-
 }

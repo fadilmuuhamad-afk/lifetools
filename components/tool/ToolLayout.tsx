@@ -9,25 +9,12 @@ export default function ToolLayout({
     children,
     sidebar,
 }: Props) {
-    return (    
-        <div
-            className="
-                grid
-                grid-cols-1
-                gap-8
-                lg:grid-cols-3
-                lg:gap-10
-                xl:gap-12
-            "
-        >
-            <main
-                className="
-                    order-1
-                    lg:col-span-2
-                "
-            >
+    return (
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
+
+            <div className="min-w-0">
                 {children}
-            </main>
+            </div>
 
             <aside
                 className="
@@ -39,6 +26,7 @@ export default function ToolLayout({
             >
                 {sidebar}
             </aside>
+
         </div>
     );
 }

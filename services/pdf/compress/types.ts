@@ -14,6 +14,12 @@ export type CompressionStage =
     | "building"
     | "saving";
 
+export type PdfContentType =
+    | "text"
+    | "image-heavy"
+    | "mixed"
+    | "unknown";
+
 export interface CompressionProgress {
 
     current: number;
@@ -35,6 +41,8 @@ export interface AnalyzePdfResult {
     largestImageWidth: number;
 
     largestImageHeight: number;
+
+    contentType: PdfContentType;
 
     recommendedLevel: CompressionLevel;
 

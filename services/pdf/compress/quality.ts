@@ -26,42 +26,54 @@ export const QUALITY_PRESETS: Record<
     CompressionPreset
 > = {
 
+    /**
+     * Low compression
+     * Best visual quality
+     * Larger output file
+     */
     low: {
-
-        scale: 0.75,
-
-        resize: 0.85,
-
-        quality: 0.65,
-
-    },
-
-    medium: {
 
         scale: 1,
 
         resize: 1,
 
-        quality: 0.8,
+        quality: 0.90,
 
     },
 
+    /**
+     * Medium compression
+     * Balanced quality and file size
+     */
+    medium: {
+
+        scale: 0.85,
+
+        resize: 0.85,
+
+        quality: 0.75,
+
+    },
+
+    /**
+     * High compression
+     * Smallest output file
+     * Lower visual quality
+     */
     high: {
 
-        scale: 1.4,
+        scale: 0.65,
 
-        resize: 1.2,
+        resize: 0.65,
 
-        quality: 0.92,
+        quality: 0.55,
 
     },
 
 };
 
 export function getCompressionPreset(
-
     level: CompressionLevel,
-
 ): CompressionPreset {
 
     return QUALITY_PRESETS[level];

@@ -5,20 +5,17 @@ import ToolLayout from "@/components/tool/ToolLayout";
 import RelatedTools from "@/components/tool/RelatedTools";
 import AdPlaceholder from "@/components/tool/AdPlaceholder";
 import ToolWorkspace from "@/components/tool/ToolWorkspace";
-import Breadcrumb
-    from "@/components/seo/Breadcrumb";
-import ToolSchema
-    from "@/components/seo/ToolSchema";
-import BreadcrumbSchema
-    from "@/components/seo/BreadcrumbSchema";
+import ToolContent from "@/components/tool/content/ToolContent";
+
+import Breadcrumb from "@/components/seo/Breadcrumb";
+import ToolSchema from "@/components/seo/ToolSchema";
+import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
+
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 
 import {
     getCategoryById,
-} from "@/lib/tools";
-
-import {
     getTool,
     getRelatedTools,
 } from "@/lib/tools";
@@ -180,6 +177,8 @@ export default async function ToolPage({
                 </div>
 
             </ToolLayout>
+
+            <ToolContent slug={tool.slug} />
 
         </main>
         </>

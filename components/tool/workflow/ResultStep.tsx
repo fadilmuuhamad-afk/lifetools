@@ -23,17 +23,15 @@ export default function ResultStep({
     resultUrl,
     onDownload,
     onReset,
-
-    // Tambahkan ini
     resetText = "Choose Another File",
-
-}: Props)  {
+}: Props) {
     return (
-        <div className="space-y-8">
+        <div className="space-y-6">
 
             <BeforeAfterPreview
                 before={originalUrl}
                 after={resultUrl}
+                previewType="pdf"
             />
 
             <ResultCard
@@ -50,6 +48,7 @@ export default function ResultStep({
             </PrimaryButton>
 
             <RecommendedResources />
+
         </div>
     );
 }
